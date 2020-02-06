@@ -1,6 +1,5 @@
 #include "stack.h"
 
-
 stack::stack() :
     data(new double[5]),
     current_size(0),
@@ -20,12 +19,13 @@ stack::stack(const stack& s) :
 }
 
 const stack& stack::operator = ( const stack& s ) {
-  //TO-DO:
-  if (current_size != s.current_size) current_size = s.current_size;
 
-  ensure_capacity(current_size);
+  if (current_size != s.current_size) {
+    ensure_capacity(s.current_size);
+    current_size = s.current_size;
+  }
 
-  for (size_t i = 0; i < s.current_size; i++) {
+  for (size_t i = 0; i < current_size; i++) {
     data[i] = s.data[i];
   }
   return *this;
@@ -54,17 +54,16 @@ void stack::push(double val) {
 
 double stack::peek() const {
 
-  if (empty())
-    throw std::runtime_error( "pop: stack is empty");
+  // if (empty())
+  //   throw std::runtime_error( "pop: stack is empty");
 
   return data[current_size - 1];
 }
 
 void stack::pop() {
 
-  if (empty())
-    throw std::runtime_error( "pop: stack is empty");
-
+  // if (empty())
+  //   throw std::runtime_error( "pop: stack is empty");
 
   current_size--;
 }

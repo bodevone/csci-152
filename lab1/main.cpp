@@ -100,8 +100,8 @@ double rpn( const std::vector<std::string> & expr )
 void teststack( ) {
   stack s1 = { 1, 2, 3, 4, 5 };
   stack s2 = s1; // Copy constructor.
-  
-  for( unsigned int j = 0; j < 30; ++ j ) s2. push( j * j );
+
+  for( unsigned int j = 0; j < 5; ++ j ) s2. push( j * j );
 
   std::cout << s2 << "\n";
 
@@ -116,21 +116,21 @@ void teststack( ) {
 
 int main( int argc, char* argv [ ] )
 {
-  teststack();
+  // teststack();
 
    // If your stack was implemented correctly, this example from
    // wikipedia will work. The outcome is 5.
 
-   // double d = rpn(
-   //    { "15", "7", "1", "1", "+", "-", "/", "3", "*",
-   //       "2", "1", "1", "+", "+", "-" } );
-   //
-   // std::cout << "outcome is " << d << "\n";
-   //
-   // // sqrt(2) * sqrt(2) = 2.
-   //
-   // d = rpn( { "2", "sqrt", "2", "sqrt", "*" } );
-   // std::cout << "outcome is " << d << "\n";
+   double d = rpn(
+      { "15", "7", "1", "1", "+", "-", "/", "3", "*",
+         "2", "1", "1", "+", "+", "-" } );
+
+   std::cout << "outcome is " << d << "\n";
+
+   // sqrt(2) * sqrt(2) = 2.
+
+   d = rpn( { "2", "sqrt", "2", "sqrt", "*" } );
+   std::cout << "outcome is " << d << "\n";
 
    return 0;
 }

@@ -1,4 +1,3 @@
-
 #ifndef STACK_INCLUDED
 #define STACK_INCLUDED  1
 

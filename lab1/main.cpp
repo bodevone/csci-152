@@ -110,10 +110,8 @@ void teststack( ) {
   s1 = { 100,101,102,103 };
     // Works because the compiler inserts constructor and
     // calls assignment with the result.
-    
   std::cout << s1 << "\n";
 }
-
 
 int main( int argc, char* argv [ ] )
 {

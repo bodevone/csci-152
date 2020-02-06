@@ -1,13 +1,6 @@
-//
-//  stack.hpp
-//  stack
-//
-//  Created by Alibi Shalgymbay on 2/7/20.
-//  Copyright © 2020 Alibi Shalgymbay. All rights reserved.
-//
 
-#ifndef stack_hpp
-#define stack_hpp
+#ifndef STACK_INCLUDED
+#define STACK_INCLUDED  1
 
 #include <iostream>
 #include <initializer_list>
@@ -55,11 +48,9 @@ public:
 
    bool empty( ) const;
 
-   friend std::ostream& operator << ( std::ostream& , const stack& );
+   friend std::ostream& operator << ( std::ostream& out, const stack& s);
 };
 
 std::ostream& operator << ( std::ostream& , const stack& );
 
-
-
-#endif /* stack_hpp */
+#endif

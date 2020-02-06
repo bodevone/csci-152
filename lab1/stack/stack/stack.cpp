@@ -21,7 +21,7 @@ stack::stack(const stack& s) :
   }
 }
 
-stack& stack::operator=(const stack& s) {
+const stack& stack::operator = ( const stack& s ) {
   //TO-DO:
 
   current_size = s.current_size;
@@ -33,14 +33,17 @@ stack& stack::operator=(const stack& s) {
 }
 
 
-stack::stack( std::initializer_list<double> init ) {
-  for (int i = 0; i < init.size(); i++) {
+stack::stack( std::initializer_list<double> init ) :
+    current_size(init.size())
+{
+  for (size_t i = 0; i < init.size(); i++) {
     data[i] = init.begin()[i];
   }
 }
 
 void stack::push(double val) {
   //TO-DO: check size and capacity
+  ensure_capacity(current_size+1);
   data[current_size] = val;
   ++current_size;
 }
@@ -72,6 +75,19 @@ size_t stack::size() const {
 
 bool stack::empty() const {
   return (current_size == 0);
+}
+
+std::ostream& operator << ( std::ostream& out, const stack& s) {
+  out << "[";
+  for (size_t i = 0; i < s.current_size; i++) {
+    if (i > 0) {
+      out << ", ";
+    }
+    out << s.data[i];
+  }
+  out << "]";
+    return out;
+
 }
 
 

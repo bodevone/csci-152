@@ -48,7 +48,7 @@ public:
 
    bool empty( ) const;
 
-   friend std::ostream& operator << ( std::ostream& , const stack& );
+   friend std::ostream& operator << ( std::ostream& out, const stack& s);
 };
 
 std::ostream& operator << ( std::ostream& , const stack& );

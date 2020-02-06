@@ -1,7 +1,5 @@
-
 #include "stack.h"
 
-// Use this method for all your reallocations:
 
 stack::stack() :
     data(new double[5]),
@@ -23,8 +21,9 @@ stack::stack(const stack& s) :
 
 const stack& stack::operator = ( const stack& s ) {
   //TO-DO:
+  if (current_size != s.current_size) current_size = s.current_size;
 
-  current_size = s.current_size;
+  ensure_capacity(current_size);
 
   for (size_t i = 0; i < s.current_size; i++) {
     data[i] = s.data[i];
@@ -34,21 +33,20 @@ const stack& stack::operator = ( const stack& s ) {
 
 
 stack::stack( std::initializer_list<double> init ) :
-    current_size(init.size())
+    data(new double[init.size()]),
+    current_size(init.size()),
+    current_capacity(init.size())
 {
+
   size_t i = 0;
   for(double val: init) {
     data[i] = val;
     ++i;
   }
-
-  // for (size_t i = 0; i < init.size(); i++) {
-  //   data[i] = init.begin()[i];
-  // }
 }
 
 void stack::push(double val) {
-  //TO-DO: check size and capacity
+
   ensure_capacity(current_size+1);
   data[current_size] = val;
   ++current_size;
@@ -56,10 +54,17 @@ void stack::push(double val) {
 
 double stack::peek() const {
 
+  if (empty())
+    throw std::runtime_error( "pop: stack is empty");
+
   return data[current_size - 1];
 }
 
 void stack::pop() {
+
+  if (empty())
+    throw std::runtime_error( "pop: stack is empty");
+
 
   current_size--;
 }
@@ -94,7 +99,6 @@ std::ostream& operator << ( std::ostream& out, const stack& s) {
   out << "]";
   return out;
 }
-
 
 void stack::ensure_capacity( size_t c )
 {

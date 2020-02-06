@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <vector>
 #include <string>
@@ -101,8 +100,10 @@ double rpn( const std::vector<std::string> & expr )
 void teststack( ) {
   stack s1 = { 1, 2, 3, 4, 5 };
   stack s2 = s1; // Copy constructor.
-
+  
   for( unsigned int j = 0; j < 30; ++ j ) s2. push( j * j );
+
+  std::cout << s2 << "\n";
 
   s1 = s2; // Assignment.
   s1 = s1; // Self assignment.
@@ -115,10 +116,10 @@ void teststack( ) {
 
 int main( int argc, char* argv [ ] )
 {
+  teststack();
+
    // If your stack was implemented correctly, this example from
    // wikipedia will work. The outcome is 5.
-
-   teststack();
 
    // double d = rpn(
    //    { "15", "7", "1", "1", "+", "-", "/", "3", "*",

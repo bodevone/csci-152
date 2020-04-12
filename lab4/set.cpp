@@ -100,7 +100,7 @@ const treenode* find( const treenode *n, int i )
 {
    if (n == nullptr) return n;
    else if (n->val == i) return n;
-   else if (n->val < i) return find(n->left, i);
+   else if (n->val > i) return find(n->left, i);
    else return find(n->right, i);
 }
 
